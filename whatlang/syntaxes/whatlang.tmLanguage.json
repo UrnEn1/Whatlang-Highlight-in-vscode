@@ -1,0 +1,93 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "WhatLang",
+	"patterns": [
+		{ "include": "#keywords" },
+		{ "include": "#strings" },
+		{ "include": "#builtInCommands" },
+		{ "include": "#variable" },
+		{ "include": "#number" },
+		{ "include": "#operator" },
+		{
+			"match": "¿",
+			"name": "constant.other.whatlang"
+		},
+		{
+			"match": "('.)",
+			"name": "string.quoted.single.whatlang"
+		},
+		{
+			"match": "(\\?(?:(?:0|1|01-)\\?)?~?)",
+			"name": "keyword.operator.comparison"
+		},
+        { 
+            "match": "(\\[\\(.*?\\)[a-z]*\\])((?:match|repl|split)@)",
+            "captures": {
+                "1": {
+                    "name": "constant.regexp.whatlang"
+                },
+                "2": {
+                    "name":"constant.language.whatlang"
+                }
+            }
+        },
+		{
+			"match": "((?:acos|and|arr|asin|atan|band|bnot|bor|bxor|ca|cat|chr|cmd|cmdall|cmddel|cmdget|cmdgeth|cmdgethelp|cmdset|cmdseth|cmdsethelp|cos|eq|fech|fetch|filter|findmsg|flr|getmsg|guildmem|help|helpall|in|inf|join|len|match|me|nan|ninf|noterc|noterd|notere|notewc|notewd|notewe|nout|nouts|nsend|num|or|ord|outaudio|outfile|outimag|outimg|outksq|outquote|outsvg|outvideo|pow|pr|prompt|propt|rand|randint|range|reesc|repl|repr|reverse|send|sends|sendsto|sin|sleep|split|stack|stak|str|tan|throw|time|try|type|undef|you)@)",
+			"captures": {
+				"1": {
+					"name": "constant.language.whatlang"
+				}
+    		}
+		},
+		{
+			"match": "([A-Za-z][A-Za-z0-9_]*\\x40)",
+			"name": "support.function.whatlang"
+		},
+		{
+			"match": "([A-Za-z][A-Za-z0-9_]*)",
+			"name": "variable.whatlang"
+		},
+		{
+			"match": "¡.*$",
+			"name": "comment.line.whatlang"
+		},
+		{
+			"begin": "0\\{",
+			"end": "\\*\\}",
+			"name": "comment.block.whatlang",
+			"contentName": "comment.block.content.whatlang"
+		}
+	],
+	"repository": {
+		"strings": {
+			"name": "string.quoted.double.whatlang",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.whatlang",
+					"match": "\\\\."
+				}
+			]
+		},
+		"string": {
+			"name": "string.whatlang",
+			"match": "('.)"
+		},
+		"variable": {
+			"name": "entity.name.tag.whatlang",
+			"match": "([A-Za-z][A-Za-z0-9_]*)(?:=|\\^|¬)"
+		},
+		"number": {
+			"name": "constant.numeric.whatlang",
+			"match": "([1-9][0-9]*|(?:\\((?:[0-9]*\\.?[0-9]*|0x[0-9A-Fa-f]+)\\)|\"(?:[0-9]*\\.?[0-9]*|0x[0-9A-Fa-f]+)\")num@)"
+		},
+		"operator": {
+			"name": "keyword.operator.whatlang",
+			"match": "([\\+\\x2d\\*/%\\?])"
+		}
+	},
+	"scopeName": "source.what",
+	"fileTypes": ["what", "wl"]
+
+}

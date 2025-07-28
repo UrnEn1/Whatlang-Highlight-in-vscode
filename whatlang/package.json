@@ -1,0 +1,36 @@
+{
+  "name": "whatlang",
+  "displayName": "WhatLang",
+  "description": "WhatLang I guess",
+  "icon": "images/icon.png",
+  "version": "0.0.1",
+  "publisher": "UrnEn",
+  "engines": {
+    "vscode": "^1.102.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/UrnEn1/Whatlang-Highlight-in-vscode"
+  },
+  "contributes": {
+    "languages": [{
+      "id": "whatlang",
+      "aliases": ["WhatLang", "whatlang"],
+      "extensions": [".what"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "whatlang",
+      "scopeName": "source.what",
+      "path": "./syntaxes/whatlang.tmLanguage.json"
+    }],
+    "debuggers": [
+      {
+        "type": "we don't have that yet."
+      }
+    ]
+  }
+}
